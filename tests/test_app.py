@@ -1,6 +1,10 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
 import unittest
 from app import app, itineraries
-
 
 
 #itineraries = []
@@ -12,6 +16,9 @@ class BasicTests(unittest.TestCase):
         
         self.app = app.test_client()
         self.app.testing = True
+
+
+    # ============== TESTS ==============
 
     def test_home(self):
         # Test case for home endpoint ('/')

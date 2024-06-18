@@ -1,12 +1,23 @@
 # Activate VM:
 # source venv/bin/activate
 
+import logging
 from flask import Flask, request, jsonify
 
 # Create a Flask application instance
 app = Flask(__name__)
 
 itineraries = {}
+
+# Configure logging for Grafana
+logging.basicConfig(level=logging.INFO)
+
+@app.before_request
+def log_request_info():
+    logging.info('Request Headers: %s', request.headers)
+    logging.info('Request Body: %s', request.get_data())
+
+
 
 # Route: Home Endpoint
 @app.route('/')
