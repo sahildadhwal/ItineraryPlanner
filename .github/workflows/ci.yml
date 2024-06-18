@@ -30,14 +30,11 @@ jobs:
       # pytest test_app.py
       
     
-    - name: Deploy to Heroku
+    - name: Deploy to PythonAnywhere
       env: 
-        # Use the Heroku API key from GitHub secrets
-        HEROKU_API_KEY: ${{ secretes.HEROKU_API_KEY }}
+        # Use the PythonAnywhere API key from GitHub secrets
+        PYTHONANYWHERE_API_KEY: ${{ secrets.PYTHONANYWHERE_API_KEY }}
       run: |
-        git remote add heroku https://git.heroku.com/your-app-name.git  # Add Heroku remote repository
-        git push heroku master                                          # Push code to Heroku for deployment
+        pa_autoconfigure_flask.py --python=3.8 https://github.com/sahildadhwal/ItineraryPlanner.git
 
-        
-
-
+      
